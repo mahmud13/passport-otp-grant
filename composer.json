@@ -12,7 +12,7 @@
     "homepage": "https://github.com/amin3536/passport-otp-grant",
     "keywords": ["Laravel", "PassportOtpGrant"],
     "require": {
-        "illuminate/support": "~7|~8",
+        "illuminate/support": "~7|~8|~9",
         "laravel/passport": "^10.1"
     },
     "require-dev": {
