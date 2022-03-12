@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: amin
@@ -82,16 +83,16 @@ class OTPGrant extends AbstractGrant
      */
     protected function validateUser(ServerRequestInterface $request, ClientEntityInterface $client)
     {
-        $phoneNumber = $this->getRequestParameter('phone_number', $request);
+        $phoneNumber = $this->getRequestParameter(config('auth.otp.username', 'username'), $request);
 
         if (\is_null($phoneNumber)) {
-            throw OAuthServerException::invalidRequest('phone_number');
+            throw OAuthServerException::invalidRequest(config('auth.otp.username', 'username'));
         }
 
-        $otp = $this->getRequestParameter('otp', $request);
+        $otp = $this->getRequestParameter(config('auth.otp.otp', 'otp'), $request);
 
         if (\is_null($otp)) {
-            throw OAuthServerException::invalidRequest('otp');
+            throw OAuthServerException::invalidRequest(config('auth.otp.otp', 'otp'));
         }
 
         $user = $this->OTPRepository->getUserEntityByUserCredentials(
