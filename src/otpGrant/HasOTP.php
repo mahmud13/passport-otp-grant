@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: amin
- * Date: 2/14/21
- * Time: 2:29 PM.
+ * @author mahmud
  */
 
 namespace Amin3536\PassportOtpGrant\otpGrant;
@@ -47,8 +44,9 @@ trait HasOTP
             if (!$otp) {
                 throw OAuthServerException::invalidRequest('otp', 'otp is wrong ');
             }
-            if ($otp->updated_at->diff(now())->format('%i min') > $this->getOTPExpireTime()) {
-                throw  OAuthServerException::invalidRequest('otp', 'otp code expired try  get it  again');
+
+            if ($otp->updated_at->diffInMinutes(now()) > $this->getOTPExpireTime()) {
+                throw  OAuthServerException::invalidRequest('otp', 'otp code expired try to get it again');
             }
         } else {
             $orig_otp = $user->{$this->getOTPColumn()};

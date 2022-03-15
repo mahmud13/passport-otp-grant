@@ -1,10 +1,8 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: amin
- * Date: 2/14/21
- * Time: 12:14 PM.
+ * @author mahmud 
+ * 
  */
 
 namespace Amin3536\PassportOtpGrant\otpGrant;
